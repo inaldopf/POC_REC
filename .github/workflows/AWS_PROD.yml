@@ -20,11 +20,11 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt; fi
  
     - name: Deploy AWS
       run: |
             echo "Conectando no EC2"
             echo "${{secrets.AWS_KEY}}" > private_key && chmod 600 private_key
-            ssh -o StrictHostKeyChecking=no -i private_key ubuntu@ec2-44-219-251-229.compute-1.amazonaws.com "
-            cd hestia_rpa-sync/;git pull"
+            ssh -o StrictHostKeyChecking=no -i private_key ubuntu@ec2-54-209-54-11.compute-1.amazonaws.com "
+            cd /POC_REC;git pull"
